@@ -1,0 +1,27 @@
+<div class="wrap">
+    <div class="d-flex flex-wrap ">
+        <div *ngFor="let card of cards" class="card col-12 col-sm-6 col-md-4 col-lg-3 mb-4" style="width: 18rem;">
+            <img class="img" [src]="card.img" alt="..." >
+            <div class="magnifier" >
+                <i class="fa-solid fa-magnifying-glass" (click)="showInfo(card)"></i>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ card.title }}</h5>
+                <p class="card-text">{{ card.text }}</p>
+                <a [href]="card.link" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="selectedCard" class="overlay">
+        <div class="info-popup">
+            <h4>{{ selectedCard.title }}</h4>
+            <img [src]="selectedCard.img" alt="..." width="200">
+            <p>{{ selectedCard.text }}</p>
+            <div class="d-flex justify-content-evenly">
+                <button (click)="closeInfo()">Close</button>
+                <button >Buy</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+.wrap {
+    max-width: 1200px;
+    margin: 200px auto;
+}
+@media screen and (min-width: 20px) {
+    .wrap .d-flex {
+        gap:10px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .wrap .d-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+}
+.card {
+    position: relative;
+    overflow: hidden; /* Ẩn phần vượt ra ngoài */
+}
+@media screen and (max-width: 585px) {
+    .card {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+}
+
+.card img {
+    transition: transform 0.3s ease; /* Hiệu ứng thu nhỏ ảnh */
+}
+
+.card:hover img {
+    transform: scale(0.9); /* Phóng thu nhỏ khi hover */
+}
+
+.card .magnifier {
+    position: absolute;
+    top: 10%;
+    right: -50px; /* Đặt kính lúp ngoài bên phải */
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.808);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added box-shadow value */
+}
+
+.card:hover .magnifier {
+    right: 20px; /* Di chuyển kính lúp vào gần ảnh khi hover */
+    
+}
+.magnifier{
+    padding: 14px 17px;
+}
+.magnifier :hover{
+    color: red;
+    cursor: pointer;
+    transition: all 0.3s ;
+}
+.overlay {
+    position:absolute;
+    top: -1000px;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background: rgba(0, 0, 0, 0.5); /* Tạo nền mờ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+.info-popup img, .info-popup button{
+    border-radius: 5px;
+}
+button {
+    margin-top: 20px;
+    padding: 10px 50px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

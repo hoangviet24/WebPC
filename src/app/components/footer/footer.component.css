@@ -1,0 +1,22 @@
+.footer {
+    background-color: #1a1a1a;
+    color: #ccc;
+}
+
+.footer h4 {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.footer p {
+    margin-bottom: 0.8rem;
+}
+
+.footer a:hover {
+    color: #00bcd4;
+    text-decoration: underline;
+}
+
+.divider {
+    border-color: #444;
+}
