@@ -1,4 +1,4 @@
-<section style="background-color: rgb(206,34,34)" class="fixed-top fullnavbar">
+<section style="background-color: rgb(206,34,34)" class=" fullnavbar">
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand nav-link" href="#">Trang chủ
@@ -7,13 +7,13 @@
         <span class="navbar-toggler-icon">   
       </span>
       </button>
-      <div class="collapse navbar-collapse " id="navbarSupportedContent">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
+      <div class="collapse navbar-collapse  " id="navbarSupportedContent">
+        <form class="d-flex formsearch" role="search ">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search"/>
+          <button class="btn btn-outline-light" type="submit">Tìm</button>
         </form>
-       
         <div class="user">
+          <button class="btn btn-outline-light" type="submit">0888823469 <i class="fa-solid fa-phone"></i></button>
           <button class="btn btn-outline-light" type="submit">Người dùng <i class="fa-solid fa-user"></i></button>
           <button class="btn btn-outline-light" type="submit">Giỏ hàng <i class="fa-solid fa-cart-shopping"></i></button>
         </div>
@@ -21,26 +21,27 @@
     </div>
   </nav>
   <!-- nav 2 -->
-  <nav class="navbar navbar-expand-lg">
+  <div class="overlay" *ngIf="isDropdownOpen" (click)="closeDropdown()"></div>
+  <nav class="navbar navbar-expand-lg" >
     <div class="container-fluid">
       
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <!-- Danh mục sản phẩm -->
-          <li class="nav-item dropdown ">
+          <li class="nav-item dropdown" (mouseenter)="openDropdown()" (mouseleave)="closeDropdown()">
             <a class="nav-link dropdown-toggle navbar-dropdown " data-bs-auto-close="outside" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Danh mục sản phẩm
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu dropend">
-              <li><a class="dropdown-item" href="#">Bảng giá</a></li>
+              <li><a class="dropdown-item " routerLink="costs">Bảng giá</a></li>
               <!-- dropdown văn phòng -->
-              <li class="nav-item sub-dropdown " >
-                <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">PC Văn Phòng
+              <li class="nav-item sub-dropdown "(click)="toggleDropdown('pcVanPhong')" >
+                <a class="dropdown-item dropdown-toggle dropend" data-bs-toggle="dropdown" >PC Văn Phòng
                 </a>
-                <ul class="dropdown-menu" style="padding: 10px; width: 1000px;">
-                  <div class="row">
-                    <div class="col-12 col-md-4 mb-3">
+                <ul class="sub-dropdown-menu" [class.show] = "dropdownStates.pcVanPhong" style=" width: 900px;">
+                  <div class="d-flex flex-wrap list-submenu">
+                    <div class="card">
                       <p style="font-weight: 500;">Cấu hình văn phòng</p>
                       <li ><a href="#" class="dropdown-item" >NTC - Pentium Gold G6400</a></li>
                       <li ><a href="#" class="dropdown-item" >NTC - Core i3 10105</a></li>
@@ -48,7 +49,7 @@
                       <li ><a href="#" class="dropdown-item" >NTC - Core i3 12100</a></li>
                       <li ><a href="#" class="dropdown-item" >NTC - Core i5 12400</a></li>
                     </div>
-                    <div class="col-12 col-md-4 mb-3">
+                    <div class="card">
                       <p style="font-weight: 500;">Máy bộ HP - Dell - LENOVO</p>
                       <li ><a href="#" class="dropdown-item" >Máy bộ văn phòng</a></li>
                     </div>
@@ -56,22 +57,70 @@
                 </ul>
               </li>
               <!-- dropdown gaming -->
-              <li><a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#">PC Gaming</a>
-                <ul class="dropdown-menu" style="padding: 10px; width: 400px;">
-                  <div class="row">
-                    <div class="col-12 col-md-3 mb-4">
-                      <p style="font-weight: 500;">Cấu hình gaming</p>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
+              <li class="nav-item sub-dropdown "(click)="toggleDropdown('pcGaming')">
+                <a class="dropdown-item dropdown-toggle dropend" data-bs-toggle="dropdown">PC Gaming</a>
+                <ul class="sub-dropdown-menu"  [class.show] = "dropdownStates.pcGaming" style="padding: 10px; width: 900px;">
+                  <div class="d-flex flex-wrap list-submenu">
+                    <!-- ryzen -->
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming AMD</p>
+                      <li ><a href="#" class="dropdown-item" >Ryzen 5 - 7 - 9</a></li>
                     </div>
-                    <div class="col-12 col-md-3 mb-4">
-                      <p style="font-weight: 500;">Cấu hình gaming 2</p>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
-                      <li ><a href="#" class="dropdown-item" >NTC</a></li>
+                    <!-- Gen 14 core -->
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming Gen 14</p>
+                      <li ><a href="#" class="dropdown-item" >Core i5 i7 i9</a></li>
+                    </div>
+                    <!-- Gen 13 core -->
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming Gen 13</p>
+                      <li ><a href="#" class="dropdown-item" >Core i3 </a></li>
+                      <li ><a href="#" class="dropdown-item" >Core i5 </a></li>
+                      <li ><a href="#" class="dropdown-item" >Core i7 </a></li>
+                      <li ><a href="#" class="dropdown-item" >Core i9 </a></li>
+                    </div>
+                    <!-- Gen 12 core -->
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming Gen 12</p>
+                      <li ><a href="#" class="dropdown-item" >Core i3 12100f</a></li>
+                      <li ><a href="#" class="dropdown-item" >Core i5 12400f</a></li>
+                      <li ><a href="#" class="dropdown-item" >Core i5 12600f</a></li>
+                      <li ><a href="#" class="dropdown-item" >Core i7 12700f</a></li>
+                      <li ><a href="#" class="dropdown-item" >Core i9 12900f</a></li>
+                    </div>
+                    <!-- Theo CPU -->
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming theo CPU</p>
+                      <li ><a href="#" class="dropdown-item" >PC Gaming intel</a></li>
+                      <li ><a href="#" class="dropdown-item" >PC Gaming AMD</a></li>
+                    </div>
+                    <!-- Theo VGA -->
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming theo GPA</p>
+                      <li ><a href="#" class="dropdown-item" >VGA Gt1030</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA GTX1050ti</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA GTX1650</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA GTX1660</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA GTX1660 Super</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA RTX2060</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA RTX3060</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA 6600 & 6600XT</a></li>
+                      <li ><a href="#" class="dropdown-item" >VGA RTX3050</a></li>
+                    </div>
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming theo giá</p>
+                      <li ><a href="#" class="dropdown-item" >Dưới 5 triệu</a></li>
+                      <li ><a href="#" class="dropdown-item" >Từ 5 triệu tới 10 triệu</a></li>
+                      <li ><a href="#" class="dropdown-item" >Từ 10 triệu tới 20 triệu</a></li>
+                      <li ><a href="#" class="dropdown-item" >Trên 20 triệu</a></li>
+                    </div>
+                    <div class="card">
+                      <p style="font-weight: 500;">PC Gaming theo game giả lập</p>
+                      <li ><a href="#" class="dropdown-item" >XEON 2689</a></li>
+                      <li ><a href="#" class="dropdown-item" >XEON 2678V3 2673V3</a></li>
+                      <li ><a href="#" class="dropdown-item" >XEON 80V4 83V4 86V4 96V4</a></li>
+                      <li ><a href="#" class="dropdown-item" >DUAL XEON</a></li>
+                      <li><a href="#" class="dropdown-item">Loại khác</a></li>
                     </div>
                   </div>
                 </ul>
@@ -85,7 +134,7 @@
           </li>
           <!-- Chính sách vận chuyển -->
           <li class="nav-item">
-            <a class="nav-link " href="#">Chính sách vận chuyển</a>
+            <a class="nav-link " routerLink="shippingpolicy">Chính sách vận chuyển</a>
           </li>
           <!-- Chính sách đổi trả và bảo hành -->
           <li class="nav-item">
@@ -95,5 +144,16 @@
       </div>
     </div>
   </nav>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const subDropdowns = document.querySelectorAll('.nav-item.sub-dropdown');
+  
+      subDropdowns.forEach(function(subDropdown) {
+        subDropdown.addEventListener('click', function(event) {
+          event.preventDefault();
+          subDropdown.classList.toggle('active');
+        });
+      });
+    });
+  </script>
 </section>
-

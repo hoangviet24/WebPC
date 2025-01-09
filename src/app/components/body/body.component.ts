@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
-
+  title = 'Web PC';
   cards = [
     {
       title: 'Card title 1',

@@ -1,0 +1,9 @@
+.wrap{
+    max-width: 1200px;
+    max-height: max-content;
+    margin: 50px auto;
+    font-size: 30px;
+}
+.title{
+    font-size: 20px;
+}
